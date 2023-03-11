@@ -28,8 +28,15 @@ function Add-NuGetDependencies {
             $FileToLoad = Join-Path (Join-Path (Join-Path "$destinationPath" "lib") "net45") "${dep}.dll"
             if (-not (Test-Path "$FileToLoad" -PathType Leaf))
             {
-                Throw -Message "Can't find or open file ${FileToLoad}."
+                $FileToLoad = Join-Path (Join-Path (Join-Path "$destinationPath" "lib") "net48") "${dep}.dll"
             }
+
+            if (-not (Test-Path "$FileToLoad" -PathType Leaf))
+            {
+                Throw "Can't find or open file ${FileToLoad}."
+            }
+
+            Write-Host "Loading: ${FileToLoad}..."
             [System.Reflection.Assembly]::LoadFrom($FileToLoad) | Out-Null
         }
     }

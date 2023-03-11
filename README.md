@@ -7,6 +7,12 @@ Here you will find some automation samples for using [FlaUI](https://github.com/
 * Windows PowerShell 5.0+
 * Installed [Pester Powershell module](https://github.com/pester/Pester#installation)
 
+Run in an Administrative PowerShell terminal:
+
+```
+Install-Module -Name Pester -Force -SkipPublisherCheck
+```
+
 ## Hints
 
 The scripts are tests with Windows 10 Version 1809 (OS Build 17763.2237).
